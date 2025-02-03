@@ -43,7 +43,15 @@
   } finally {
     connection.release();
   }
-}
+  }
   ~~~
 
-  
+## can be simple with orm with also type support
+
+  ~~~javascipt
+      const user: typeof userTable.$inferInsert = {
+        name: 'John',
+        age: 30,
+        email: 'john@example.com',
+    };
+  ~~~
