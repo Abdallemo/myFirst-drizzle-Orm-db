@@ -49,7 +49,19 @@
 ## can be simple with orm with also type support
 
   ~~~javascipt
-      const user: typeof userTable.$inferInsert = {
+  //easy way to define schema
+  import { integer, pgTable, uuid, varchar } from "drizzle-orm/pg-core";
+    export const userTable = pgTable('user',{
+        id:uuid('id').primaryKey().defaultRandom(),
+        name:varchar('name',{length:255}).notNull(),
+        age:integer('age').notNull(),
+        email:varchar('email',{length:255}).notNull().unique()
+    });
+  ~~~
+
+  ~~~javascipt
+  //easy way to insert
+        const user: typeof userTable.$inferInsert = {
         name: 'John',
         age: 30,
         email: 'john@example.com',
